@@ -1,0 +1,14 @@
+development:
+  database: kodacamp-social-media
+  username: root
+  password: qwer4321
+  adapter: mysql2
+  encoding: utf8mb4
+  host: db
+test:
+  database: kodacamp-social-media_test
+  username: root
+  password: qwer4321
+  adapter: mysql2
+  encoding: utf8mb4
+  host: db
