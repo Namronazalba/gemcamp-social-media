@@ -1,0 +1,11 @@
+<%= render "layouts/navbar/sharednav" %>
+<h1 class="w-50 m-auto p-5 text-center">Friend request</h1>
+<%= render "layouts/notification_msg/notify" %>
+<% @inverse_friendships.each do |inverse_friendship| %>
+  <div class="text-center border w-25 m-auto p-5">
+    <%= inverse_friendship.user.email %> <br>
+    <%= link_to 'Confirm', friend_request_confirm_path(friend_request_id: inverse_friendship), class: 'btn btn-success w-75',method: :put if inverse_friendship.may_confirm? %>
+    <%= link_to "Ignore", friend_request_path(inverse_friendship),data:{confirm:'Are you sure do you want to cancel this request?'}, method: :delete, class: "btn btn-success w-25" %>
+  </div>
+  <br><br>
+<% end %>

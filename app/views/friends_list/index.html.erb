@@ -1,0 +1,17 @@
+<%= render "layouts/navbar/sharednav" %>
+<h1 class="w-50 m-auto p-5 text-center">Friends list</h1>
+<%= render "layouts/notification_msg/notify" %>
+<% @friends.each do |friend| %>
+  <div class="text-center border w-25 m-auto p-5">
+    <%= friend.friend.email %> <br>
+    <%= link_to "Unfriend", friends_list_path(friend),data:{confirm:'Are you sure do you want to cancel this request?'}, method: :delete, class: "btn btn-success w-75" %>
+  </div>
+  <br><br>
+<% end %>
+<% @inverse_friends.each do |inverse_friend| %>
+  <div class="text-center border w-25 m-auto p-5">
+    <%= inverse_friend.user.email %> <br>
+    <%= link_to "Unfriend", friends_list_path(inverse_friend),data:{confirm:'Are you sure do you want to cancel this request?'}, method: :delete, class: "btn btn-success w-75" %>
+  </div>
+  <br><br>
+<% end %>

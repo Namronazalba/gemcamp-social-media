@@ -1,0 +1,18 @@
+<%= render "layouts/navbar/sharednav" %>
+<%= render "layouts/notification_msg/notify" %>
+<h1 class="w-50 m-auto p-5 text-center">People you may know</h1>
+<% @users.each do |user| %>
+  <div class="text-center border w-25 m-auto p-5">
+    <%= user.email %> <br>
+    <%= link_to 'Add', friendships_path(friend_id: user), method: :post,class: 'btn btn-success w-75' %>
+  </div>
+  <br><br>
+<% end %>
+
+<% @friendships.each do |friendship| %>
+  <div class="text-center border w-25 m-auto p-5">
+    <%= friendship.friend.email %> <br>
+    <%= link_to "Cancel", friendship_path(friendship),data:{confirm:'Are you sure do you want to cancel this request?'}, method: :delete, class: "btn btn-success w-75" %>
+  </div>
+  <br><br>
+<% end %>

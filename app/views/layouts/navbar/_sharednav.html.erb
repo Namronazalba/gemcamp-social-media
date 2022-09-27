@@ -9,6 +9,15 @@
           <%= link_to "Posts", posts_path, class: "nav-link link-info text-decoration-none" if user_signed_in? %>
         </li>
         <li class="nav-item">
+          <%= link_to "Peoples", friendships_path, class: "nav-link link-info text-decoration-none" if user_signed_in? %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Friend requests", friend_requests_path, class: "nav-link link-info text-decoration-none" if user_signed_in? %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Friends list", friends_list_index_path, class: "nav-link link-info text-decoration-none" if user_signed_in? %>
+        </li>
+        <li class="nav-item">
           <%= link_to "Logout", destroy_user_session_path, class: "nav-link link-info text-decoration-none", :method => :delete if user_signed_in? %>
         </li>
         <li class="nav-item">
