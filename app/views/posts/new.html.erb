@@ -1,0 +1,7 @@
+<div class="main w-50 m-auto">
+  <h1>Create post</h1>
+  <%= form_for @post, url: posts_path, method: :post do |f| %>
+    <%= render partial: 'form', locals: {f: f, post: @post} %> <br>
+    <%= f.submit "Save",class: 'btn btn-primary', style:'margin-buttom: 10px;' %><br><br>
+  <% end %>
+</div>

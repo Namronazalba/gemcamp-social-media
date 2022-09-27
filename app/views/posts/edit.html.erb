@@ -1,0 +1,7 @@
+<div class="main w-50 m-auto">
+  <h1>Edit post</h1>
+  <%= form_for @post, url: post_path, method: :patch do |f| %>
+    <%= render partial: 'form', locals: {f: f, post: @post} %> <br>
+    <%= f.submit "Update",class: 'btn btn-primary' %> <br><br>
+  <% end %>
+</div>
