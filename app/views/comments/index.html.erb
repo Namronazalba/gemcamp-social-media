@@ -1,0 +1,14 @@
+<%= render "layouts/navbar/sharednav" %>
+<div class="w-50 m-auto">
+  <%= link_to 'new', new_post_comment_path(@post) %> <br> <br>
+  <% @comments.each do |comment| %>
+  <label><p>Email : <%= comment.user.email %></p></label> <br>
+  <label><p>Content : <%= comment.content %></p></label>
+    <div>
+      <%= link_to 'edit', edit_post_comment_path(@post, comment)if policy(comment).update? %>
+      <%= link_to 'delete', post_comment_path(@post, comment), method: :delete, data: { confirm: "Are you sure?" }if policy(comment).update?%>
+    </div>
+    <br> <br>
+<% end %>
+
+</div>
