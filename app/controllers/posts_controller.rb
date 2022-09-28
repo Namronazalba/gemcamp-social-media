@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, except: [:index, :new, :create]
 
   def index
-    @posts = Post.all
+    @posts = current_user.posts.order(id: :desc)
   end
 
   def new
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
   def update
     if @post.update(post_params)
       flash[:notice] = "Post updated successfully!"
-      redirect_to posts_path
+      redirect_to root_path
     else
       flash[:alert] = "Post failed to edit!"
       render :edit
@@ -53,5 +53,6 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:post_id] || params[:id])
+    authorize @post
   end
 end

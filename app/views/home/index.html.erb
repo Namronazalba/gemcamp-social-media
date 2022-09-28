@@ -1,2 +1,21 @@
 <%= render "layouts/navbar/sharednav" %>
-<h1>Welcome user!</h1>
+<%= render "layouts/notification_msg/notify" %>
+<% @posts.each do |post| %>
+  <div class="row p-5 m-5">
+    <div class=" w-50 m-auto">
+      <div class="dropdown text-end">
+        <div class="text-center">
+          <%= post.user&.email %> <br> <br>
+          <%= image_tag post.image.url,style: 'height: auto;', class: "w-50" if post.image? %> <br> <br>
+          <%= post.content %>
+          <br>
+          <br>
+          <%= link_to " edit ", edit_post_path(post), class: "text-center border p-2 btn btn-success", style:"width:100px;" if policy(post).update? %>
+          <%= link_to "delete", post_path(post),data:{confirm:'Are you sure do you want to delete?'}, method: :delete, class: "text-center border p-2 btn btn-danger", style:"width:100px;" if policy(post).update? %>
+        </div>
+      </div>
+      <br> <br>
+      <%= link_to :comments, post_comments_path(post) %>
+    </div>
+  </div>
+<% end %>

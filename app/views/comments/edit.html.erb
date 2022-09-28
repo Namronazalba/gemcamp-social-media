@@ -1,0 +1,7 @@
+<%= link_to 'index', posts_path %>
+
+<%= form_for @comment, url: post_comment_path(@post, @comment), method: :patch do |f| %>
+  <p><%= f.label :content %></p>
+  <p><%= f.text_area :content %></p>
+  <%= f.submit %>
+<% end %>

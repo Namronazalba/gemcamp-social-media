@@ -6,27 +6,24 @@
 
 
   <div class="w-75 m-auto p-1 text-end">
-    <%= link_to 'Add', new_post_path %>
+    <%= link_to 'Add',new_post_path, class:"btn btn-success"  %>
   </div>
   <br>
+  <%= render "layouts/notification_msg/notify" %>
   <% @posts.each do |post| %>
-    <%= render "layouts/notification_msg/notify" %>
     <div class="row p-5 m-5">
       <div class=" w-50 m-auto">
         <div class="dropdown text-end">
-          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-          </a>
           <div class="text-center">
-            <%= post.content %> <br>
-            <%= image_tag post.image.url,style: 'height: auto;', class: "w-50" if post.image? %>
+            <%= image_tag post.image.url,style: 'height: auto;', class: "w-50" if post.image? %> <br> <br>
+            <%= post.content %>
+            <br>
+            <br>
+            <%= link_to " edit ", edit_post_path(post), class: "text-center border p-2 btn btn-success", style:"width:100px;" if policy(post).update? %>
+            <%= link_to "delete", post_path(post),data:{confirm:'Are you sure do you want to delete?'}, method: :delete, class: "text-center border p-2 btn btn-danger", style:"width:100px;" if policy(post).update? %>
           </div>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <li><%= link_to "update", edit_post_path(post), class: "dropdown-item text-center" %></li>
-            <li><%= link_to "delete", post_path(post),data:{confirm:'Are you sure do you want to delete?'}, method: :delete, class: "dropdown-item text-center" %></li>
-          </ul>
         </div>
         <br> <br>
-
       </div>
     </div>
   <% end %>

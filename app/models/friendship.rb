@@ -7,7 +7,7 @@ class Friendship < ApplicationRecord
   include AASM
   aasm column: :status do
     state :pending, initial: true
-    state :confirmed, :unfriended
+    state :confirmed
 
     event :confirm do
       transitions from: :pending, to: :confirmed

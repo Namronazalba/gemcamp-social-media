@@ -8,10 +8,6 @@ class FriendshipsController < ApplicationController
     user_ids = current_user.inverse_friendships.where(status: [:confirmed, :pending]).pluck(:user_id)
     @users =  User.where.not(id: current_user.id).where.not(id: friend_ids + user_ids)
     @friendships = current_user.friendships.pending
-    # @inverse_friendships = current_user.inverse_friendships.pending
-
-    # @friends = current_user.friendships.confirmed
-    # @inverse_friends = current_user.inverse_friendships.confirmed
   end
 
   def create

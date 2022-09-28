@@ -3,10 +3,12 @@
     <%= f.label :image %>
     <%= f.file_field :image, class: 'form-control' %>
   </div>
+  <br>
   <div>
     <%= f.label :content %>
-    <%= f.text_field :content, class: 'form-control' %>
+    <%= f.text_area(:content, rows: 6, class: 'form-control')  %>
   </div>
+  <br>
   <div>
     <%= f.label :status %>
     <%= f.select(:status, Post.statuses.keys.map { |key| [key.humanize, key] }, { include_blank: 'Please Select Status' }, { class: 'form-control mt-3' }) %>
