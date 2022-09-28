@@ -12,4 +12,6 @@ Rails.application.routes.draw do
     put :confirm
   end
   resources :friends_list
+  resources :groups
+  resources :members
 end

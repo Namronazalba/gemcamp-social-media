@@ -1,0 +1,22 @@
+<div>
+  <div>
+    <%= f.label :banner %>
+    <%= f.file_field :banner, class: 'form-control' %>
+  </div>
+  <br>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field(:name, class: 'form-control')  %>
+  </div>
+  <br>
+  <div>
+    <%= f.label :description %>
+    <%= f.text_area(:description, rows: 6, class: 'form-control')  %>
+  </div>
+  <br>
+
+  <div>
+    <%= f.label :privacy %>
+    <%= f.select(:privacy, Group.privacies.keys.map { |key| [key.humanize, key] }, { include_blank: 'Please Select Status' }, { class: 'form-control mt-3' }) %>
+  </div>
+</div>

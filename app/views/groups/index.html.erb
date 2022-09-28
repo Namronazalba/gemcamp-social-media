@@ -1,0 +1,41 @@
+<%= render "layouts/navbar/sharednav" %>
+<h1>Group lists</h1>
+<div class="w-75 m-auto p-1 text-end">
+  <%= link_to 'Create', new_group_path %>
+</div>
+<%= render "layouts/notification_msg/notify" %> <br>
+
+<div class="table-responsive">
+  <table class="table align-middle">
+    <thead>
+    <tr>
+      <th scope="col">Banner</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @groups.each do |group| %>
+      <tr>
+        <td>
+          <%= image_tag group.banner&.url, style: 'height: auto;', class: "w-50" if group.banner? %>
+        </td>
+        <td>
+          <%= group.name %>
+        </td>
+        <td>
+          <%= group.description %>
+        </td>
+        <td>
+          <%= link_to "Join", members_path(group) if policy(group).join? %>
+          <%= link_to "View", group_path(group), method: :get %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+<br> <br> <br>
+
+
