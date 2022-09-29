@@ -3,7 +3,6 @@ class Group < ApplicationRecord
   has_many :group_posts
   has_many :members
   validates :name, :description, :banner, :privacy, presence: true
-  enum role: [:admin, :moderator, :normal]
   enum privacy: [:public_group, :hidden]
   mount_uploader :banner, ImageUploader
 end
